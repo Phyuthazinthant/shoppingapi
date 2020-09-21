@@ -1,9 +1,12 @@
-
+body{
+    background-color: gray;
+}
 .form-container{
-    margin-top: 80px;
+    margin-top: 110px;
+    width: 1000px;
 }
 .formlist{
-    background-color: aqua;
+    background-color: rgb(47, 143, 119);
     
 }
 input{

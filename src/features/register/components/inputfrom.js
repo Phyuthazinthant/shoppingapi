@@ -1,6 +1,6 @@
 import React from 'react'
 import '../registerstyle.css'
-
+import {Link} from 'react-router-dom'
 
 import { Container, Row, Col, Card, CardBody, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Button } from 'reactstrap'
 export default class InputForm extends React.Component {
@@ -56,6 +56,7 @@ export default class InputForm extends React.Component {
     }
 
     register = (event) => {
+        
         const Email=this.state.Email;
         const Password=this.state.Password;
         const User_type=this.state.User_type;
@@ -68,7 +69,7 @@ export default class InputForm extends React.Component {
         myHeaders.append("Authorization", "Basic YWRtaW4yQHllc3NzLmNvbS5tbToyQzZwc1ZJZzV4OW44VGcxc0s4dTg4MWF0MDY0NzZ6MQ==");
         myHeaders.append("Content-Type", "application/json");
         console.log("MyHeaders" , myHeaders);
-        var raw = JSON.stringify({ "email": {Email}, "password": {Password}, "user_type": {User_type}, "status": {Status}, "company_id": {Company_id}, "firstname": {FirstName}, "lastname": {LastName}, "phone": {Phone} });
+        var raw = JSON.stringify({ "email": Email, "password": Password, "user_type": User_type, "status": Status, "company_id": Company_id, "firstname": FirstName, "lastname": LastName, "phone": Phone });
         console.log("Raw" ,raw)
         var requestOptions = {
             method: 'POST',
@@ -81,6 +82,7 @@ export default class InputForm extends React.Component {
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
+           
     }
     getInitialState() {
         return {
@@ -100,12 +102,12 @@ export default class InputForm extends React.Component {
         return (
 
             <div className="app flex-row align-items-center">
-                <Container className="form-container">
+                <Container className="form-container ">
                     <Row className="justify-content-center">
                         <Col md="9" lg="7" xl="6">
                             <Card className="mx-4">
                                 <CardBody className="formlist p-4">
-                                    <Form >
+                                    <Form>
                                         <div className=" row mb-2 pageheading">
                                             <div className="col-sm-12 btn " style={{ fontSize: 30, fontWeight: "bold" }}>Register</div>
                                         </div>
@@ -133,8 +135,8 @@ export default class InputForm extends React.Component {
                                         <InputGroup className="mb-3">
                                             <Input type="number" placeholder="Phone" onChange={this.ChangePhone} value={this.state.Phone} required></Input>
                                         </InputGroup>
-                                        <Button color="success" onClick={this.register} OnClick={this.getInitialState}>Register</Button>
-                                        <p>{this.state.message}</p>
+                                        <Link to="/signin"><Button color="success" onClick={this.register} OnClick={this.getInitialState}>Register</Button></Link>
+                                        
                                     </Form>
                                 </CardBody>
                             </Card>
