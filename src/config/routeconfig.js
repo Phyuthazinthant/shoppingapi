@@ -1,0 +1,1 @@
+export const registerUrl='http://www.yesss.com.mm/api.php/?_d=users'
